@@ -3,21 +3,21 @@
 
 clear
 echo -en '\033[32;1m*******************************************************\033[0m\n'
-echo -en '\033[32;1m***    ОБУСТРОЙСТВО УСТАНОВЛЕННОЙ DEBIAN СИСТЕМЫ.   ***\033[0m\n'
-echo -en '\033[32;1m*** (используя скрипт, вы берете все риски на себя) ***\033[0m\n'
-echo -en '\033[32;1m***                автор: esturiano                 ***\033[0m\n'
+echo -en '\033[32;1m***        TUNING MY NEW DEBIAN-BASED SYSTEM        ***\033[0m\n'
+echo -en '\033[32;1m***                (at your own risk)               ***\033[0m\n'
+echo -en '\033[32;1m***                    esturiano                    ***\033[0m\n'
 echo -en '\033[32;1m*******************************************************\033[0m\n'
 echo ''
 echo ''
 
-echo -en '\033[1mНеобходимые пакеты и некоторые настройки\033[33;1m (для системы и корректной работы скрипта)\033[0m\033[1m. \033[36;1mУстановить их? (y/n) \033[0m'
+echo -en '\033[1mInstalling important packages and some settings\033[33;1m (for correct script working)\033[0m\033[1m. \033[36;1mDo it?? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
         [Yy]* ) 
             sudo apt install -y curl wget yakuake unzip pipenv
-            echo -en '\033[32;1mУстановка дополнительных пакетов завершена\033[0m\n'
-            echo -en '\033[32;1mСоздание звуковой библиотеки...\033[0m\n'
+            echo -en '\033[32;1mDone.\033[0m\n'
+            echo -en '\033[32;1mMaking own audio library...\033[0m\n'
             fileid="1dxSykLylPIfGwHeOtuoaY9gYXPmo9zXi"
             filename="mysounds.zip"
             curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
@@ -25,25 +25,25 @@ while true; do
             unzip mysounds.zip
             rm mysounds.zip
             sudo mv mysounds /usr/share/sounds
-            echo -e 'Завершено.\n'
+            echo -e 'Done.\n'
             
-            echo -en '\033[32;1mДобавление MenuRootActions в Dolphin...\033[0m\n'
+            echo -en '\033[32;1mAdding MenuRootActions to the Dolphin...\033[0m\n'
             fileid="1jNiMYW3lxBYuUfeBt4z-_svhCIG1f3gb"
             filename="rootactions-servicemenu.pl"
             curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
             curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
             sudo mv rootactions-servicemenu.pl /usr/bin
-            echo -e 'Добавлено.\n'
+            echo -e 'Added.\n'
             
             break;;
-        [Nn]* ) echo -en '\033[31;1m...пропущено.\033[0m\n'; break;;
-        * ) echo -en '\033[1mПожалуйста, выберите \033[33;1;5m"y"\033[0m или \033[33;1;5m"n"\033[0m.';;
+        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
+        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
     esac
 done
 echo ''
 
 
-echo -en '\033[1mПакет\033[33;1m "JAVA 8 (jre8)"\033[0m\033[1m. \033[36;1mУстановить его? (y/n) \033[0m'
+echo -en '\033[1mPackage\033[33;1m "JAVA 8 (jre8)"\033[0m\033[1m. \033[36;1mInstalling? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
@@ -56,7 +56,7 @@ while true; do
             sudo mv jre1.8.0_271 /usr/lib/jvm/
             rm -R jre-8u271-linux-x64.tar.gz
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jre1.8.0_271/bin/java 1
-            echo -e 'Установка jre8 по умолчанию...\n'
+            echo -e 'Now jre8 is default...\n'
             sudo update-alternatives --config java
             echo -e 'Установка и настройка jre8 завершены.\n'
             break;;
