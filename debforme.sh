@@ -10,7 +10,7 @@ echo -en '\033[32;1m*******************************************************\033[
 echo ''
 echo ''
 
-echo -en '\033[1mInstalling important packages and some settings\033[33;1m (for correct script working)\033[0m\033[1m. \033[36;1mDo it?? (y/n) \033[0m'
+echo -en '\033[1mInstalling important packages and make some settings\033[33;1m (for correct script working)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
@@ -25,7 +25,7 @@ while true; do
             unzip mysounds.zip
             rm mysounds.zip
             sudo mv mysounds /usr/share/sounds
-            echo -e 'Done.\n'
+            echo -en '\033[32;1mDone.\033[0m\n'
             
             echo -en '\033[32;1mAdding MenuRootActions to the Dolphin...\033[0m\n'
             fileid="1jNiMYW3lxBYuUfeBt4z-_svhCIG1f3gb"
@@ -33,7 +33,7 @@ while true; do
             curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
             curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
             sudo mv rootactions-servicemenu.pl /usr/bin
-            echo -e 'Added.\n'
+            echo -en '\033[32;1mDone.\033[0m\n'
             
             break;;
         [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
@@ -56,17 +56,17 @@ while true; do
             sudo mv jre1.8.0_271 /usr/lib/jvm/
             rm -R jre-8u271-linux-x64.tar.gz
             sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jre1.8.0_271/bin/java 1
-            echo -e 'Now jre8 is default...\n'
+            echo -e 'Now jre8 set to default...\n'
             sudo update-alternatives --config java
-            echo -e 'Установка и настройка jre8 завершены.\n'
+            echo -en '\033[32;1mDone.\033[0m\n'
             break;;
-        [Nn]* ) echo -en '\033[31;1m...пропущено.\033[0m\n'; break;;
-        * ) echo -en '\033[1mПожалуйста, выберите \033[33;1;5m"y"\033[0m или \033[33;1;5m"n"\033[0m.';;
+        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
+        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
     esac
 done
 echo ''
 
-echo -en '\033[1mАльтернативный браузер\033[33;1m "FireFox 51.0.1"\033[0m\033[1m. \033[36;1mУстановить его? (y/n) \033[0m'
+echo -en '\033[1mSpecial browser \033[33;1m "FireFox 51.0.1"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
@@ -78,15 +78,15 @@ while true; do
             unzip firefox-51.0.1.zip
             mv firefox .firefox51
             rm -R firefox-51.0.1.zip
-            echo -e 'Установка альтернативного браузера завершена.\n'
+            echo -en '\033[32;1mDone.\033[0m\n'
             break;;
-        [Nn]* ) echo -en '\033[31;1m...пропущено.\033[0m\n'; break;;
-        * ) echo -en '\033[1mПожалуйста, выберите \033[33;1;5m"y"\033[0m или \033[33;1;5m"n"\033[0m.';;
+        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
+        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
     esac
 done
 echo ''
 
-echo -en '\033[1mПакет\033[33;1m "google-drive-ocamlfuse"\033[0m\033[1m. \033[36;1mУстановить его? (y/n) \033[0m'
+echo -en '\033[1mPackage\033[33;1m "google-drive-ocamlfuse"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
@@ -99,8 +99,8 @@ while true; do
             opam depext google-drive-ocamlfuse
             opam install google-drive-ocamlfuse
             sudo install ~/.opam/default/bin/google-drive-ocamlfuse /usr/local/bin/
-            echo -en '\033[32;1mУстановка завершена\033[0m\n'
-            echo -en '\033[32;1mНастройка пакета...\033[0m\n'
+            echo -en '\033[32;1mDone.\033[0m\n'
+            echo -en '\033[32;1mTuning...\033[0m\n'
             mkdir ~/.drive@alejandro
             mkdir ~/.drive@senoraarina
             fileid="1bvlxchCP5ZNQ1WV-o1Qq9IAKDnLs_Vq1"
@@ -110,35 +110,35 @@ while true; do
             sudo mv __ocamlgoogledrive.sh /usr/bin
             cd .config/autostart-scripts/ && ln -s /usr/bin/__ocamlgoogledrive.sh
             cd 
-            echo -e 'Настройка произведена.\n';
+            echo -en '\033[32;1mTuned.\033[0m\n'
             break;;
-        [Nn]* ) echo -en '\033[31;1m...пропущено.\033[0m\n'; break;;
-        * ) echo -en '\033[1mПожалуйста, выберите \033[33;1;5m"y"\033[0m или \033[33;1;5m"n"\033[0m.';;
+        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
+        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
     esac
 done
 echo ''
 
 
 
-echo -en '\033[1mПакет\033[33;1m "zsh"\033[0m\033[1m. \033[36;1mУстановить его? (y/n) \033[0m'
+echo -en '\033[1mPackage\033[33;1m "zsh"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            sudo apt install -y zsh curl
+            sudo apt install -y zsh
             curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh ;
             chsh -s /usr/bin/zsh;
-            echo -en '\033[32;1mУстановка завершена\033[0m\n';
+            echo -en '\033[32;1mDone.\033[0m\n'
             break;;
-        [Nn]* ) echo -en '\033[31;1m...пропущено.\033[0m\n'; break;;
-        * ) echo -en '\033[1mПожалуйста, выберите \033[33;1;5m"y"\033[0m или \033[33;1;5m"n"\033[0m.';;
+        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
+        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
     esac
 done
 echo ''
 
 
 # https://www.linuxuprising.com/2019/04/download-master-pdf-editor-4-for-linux.html
-echo -en '\033[1mПакет\033[33;1m "master-pdf-editor (free)"\033[0m\033[1m. \033[36;1mУстановить? (y/n) \033[0m'
+echo -en '\033[1mPackage\033[33;1m "master-pdf-editor (free)"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
@@ -148,16 +148,16 @@ while true; do
             sudo mv master-pdf-editor-4 /opt
             sudo install /opt/master-pdf-editor-4/masterpdfeditor4 /usr/bin
             rm -R master-pdf-editor-4.3.89_qt5.amd64.tar.gz
-            echo -e 'Установка завершена.\n'
+            echo -en '\033[32;1mVersion 4.3.89. Done.\033[0m\n'
             break;;
-        [Nn]* ) echo -en '\033[31;1m...пропущено.\033[0m\n'; break;;
-        * ) echo -en '\033[1mПожалуйста, выберите \033[33;1;5m"y"\033[0m или \033[33;1;5m"n"\033[0m.';;
+        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
+        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
     esac
 done
 echo ''
 
 # https://github.com/jimevins/glabels-qt/
-echo -en '\033[1mПакет\033[33;1m "glabels-qt (beta)"\033[0m\033[1m. \033[36;1mУстановить? (y/n) \033[0m'
+echo -en '\033[1mPackage\033[33;1m "glabels-qt (beta)"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
@@ -170,40 +170,41 @@ while true; do
             cd build
             cmake ..
             make
+            echo -en '\033[33;1mBe patient!\033[0m\n'
             sudo make install
             cd
             rm -R glabels-qt-glabels-3.99-master561
-            echo -e 'Установка завершена.\n'
+            echo -en '\033[32;1mDone.\033[0m\n'
             break;;
-        [Nn]* ) echo -en '\033[31;1m...пропущено.\033[0m\n'; break;;
-        * ) echo -en '\033[1mПожалуйста, выберите \033[33;1;5m"y"\033[0m или \033[33;1;5m"n"\033[0m.';;
+        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
+        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
     esac
 done
 echo ''
 
-echo -en '\033[1mПроприетарные драйвера\033[33;1m "nvidia 340xx"\033[0m\033[1m. \033[36;1mУстановить их? (y/n) \033[0m'
+echo -en '\033[1mDrivers\033[33;1m "nvidia 340xx-dkms"\033[0m\033[1m. \033[36;1mУInstall? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            
+            echo -en '\033[32;1mDone.\033[0m\n'
             break;;
-        [Nn]* ) echo -en '\033[31;1m...пропущено.\033[0m\n'; break;;
-        * ) echo -en '\033[1mПожалуйста, выберите \033[33;1;5m"y"\033[0m или \033[33;1;5m"n"\033[0m.';;
+        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
+        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
     esac
 done
 echo ''
 echo ''
 
 echo -en '\033[32;1m*******************************************************\033[0m\n'
-echo -en '\033[32;1m***         ОБУСТРОЙСТВО СИСТЕМЫ ЗАВЕРШЕНО.         ***\033[0m\n'
-echo -en '\033[32;1m***    В систему установлены необходимые пакеты     ***\033[0m\n'
-echo -en '\033[32;1m***         и запущены необходимые службы.          ***\033[0m\n'
+echo -en '\033[32;1m***                   GAME OVER!!!                  ***\033[0m\n'
 echo -en '\033[32;1m***                                                 ***\033[0m\n'
-echo -en '\033[32;1m***      Чтобы все изменения вступили в силу,       ***\033[0m\n'
-echo -en '\033[32;1m***               прямо сейчас лучше                ***\033[0m\n'
-echo -en '\033[32;1m***            \033[42;33;1;5mперезагрузить компьютер.\033[0m             \033[32;1m***\033[0m\n'
-echo -en '\033[32;1m***                     Удачи! :-)                  ***\033[0m\n'
+echo -en '\033[32;1m***                                                 ***\033[0m\n'
+echo -en '\033[32;1m***                                                 ***\033[0m\n'
+echo -en '\033[32;1m***                                                 ***\033[0m\n'
+echo -en '\033[32;1m***                  just now make                  ***\033[0m\n'
+echo -en '\033[32;1m***                    \033[42;33;1;5mreboot\033[0m             \033[32;1m***\033[0m\n'
+echo -en '\033[32;1m***                   Good luck! :-)                ***\033[0m\n'
 echo -en '\033[32;1m*******************************************************\033[0m\n'
 echo ''
 echo ''
