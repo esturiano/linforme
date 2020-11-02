@@ -182,7 +182,7 @@ while true; do
 done
 echo ''
 
-echo -en '\033[1mDrivers\033[33;1m "nvidia 340xx-dkms"\033[0m\033[1m. \033[36;1mУInstall? (y/n) \033[0m'
+echo -en '\033[1mDrivers\033[33;1m "nvidia 340xx-dkms"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
@@ -196,22 +196,29 @@ done
 echo ''
 echo ''
 
+echo -en '\033[1mDo you want to remove the script\033[33;1m "debforme.sh"\033[0m\033[1m\033[36;1m? (y/n) \033[0m'
+while true; do
+    read yn
+    case $yn in
+        [Yy]* ) 
+            rm -f debforme.sh
+            echo -en '\033[32;1mDone.\033[0m\n'
+            break;;
+        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
+        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
+    esac
+done
+echo ''
+echo ''
+
 echo -en '\033[32;1m*******************************************************\033[0m\n'
 echo -en '\033[32;1m***                   GAME OVER!!!                  ***\033[0m\n'
 echo -en '\033[32;1m***                                                 ***\033[0m\n'
-echo -en '\033[32;1m***                                                 ***\033[0m\n'
-echo -en '\033[32;1m***                                                 ***\033[0m\n'
-echo -en '\033[32;1m***                                                 ***\033[0m\n'
 echo -en '\033[32;1m***                  just now make                  ***\033[0m\n'
-echo -en '\033[32;1m***                    \033[42;33;1;5mreboot\033[0m             \033[32;1m***\033[0m\n'
+echo -en '\033[32;1m***                      \033[42;33;1;5mreboot\033[0m                     \033[32;1m***\033[0m\n'
 echo -en '\033[32;1m***                   Good luck! :-)                ***\033[0m\n'
 echo -en '\033[32;1m*******************************************************\033[0m\n'
 echo ''
 echo ''
 
 
-
-
-# Финиш
-# Удаляем скрипт.
-rm -f debforme.sh
