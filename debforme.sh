@@ -15,24 +15,7 @@ while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            sudo apt install -y curl yakuake unzip pipenv cmake build-essential pkg-config ssh libcurl4-gnutls-dev libfuse-dev libgmp-dev libsqlite3-dev zlib1g-dev camlp4-extra
-            echo '\033[32;1mDone.\033[0m\n'
-            echo '\033[32;1mMaking own audio library...\033[0m\n'
-            fileid="1dxSykLylPIfGwHeOtuoaY9gYXPmo9zXi"
-            filename="mysounds.zip"
-            curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
-            curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
-            unzip mysounds.zip
-            rm mysounds.zip
-            sudo mv mysounds /usr/share/sounds
-            echo '\033[32;1mDone.\033[0m\n'
-            
-            echo '\033[32;1mAdding MenuRootActions to the Dolphin...\033[0m\n'
-            fileid="1jNiMYW3lxBYuUfeBt4z-_svhCIG1f3gb"
-            filename="rootactions-servicemenu.pl"
-            curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
-            curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
-            sudo mv rootactions-servicemenu.pl /usr/bin
+            sudo apt install -y curl yakuake unzip pipenv cmake build-essential pkg-config ssh libcurl4-gnutls-dev libfuse-dev libgmp-dev libsqlite3-dev zlib1g-dev camlp4-extra kate git
             echo '\033[32;1mDone.\033[0m\n'
             
             break;;
