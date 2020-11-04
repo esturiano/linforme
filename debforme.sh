@@ -15,7 +15,7 @@ while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            sudo apt install -y curl wget yakuake unzip pipenv
+            sudo apt install -y curl yakuake unzip pipenv cmake build-essential pkg-config ssh libcurl4-gnutls-dev libfuse-dev libgmp-dev libsqlite3-dev zlib1g-dev camlp4-extra
             echo '\033[32;1mDone.\033[0m\n'
             echo '\033[32;1mMaking own audio library...\033[0m\n'
             fileid="1dxSykLylPIfGwHeOtuoaY9gYXPmo9zXi"
@@ -43,21 +43,50 @@ done
 echo ''
 
 
+echo '\033[1mSystem notification library\033[33;1m (my favorite sounds)\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
+while true; do
+    read yn
+    case $yn in
+        [Yy]* ) 
+            fileid="1dxSykLylPIfGwHeOtuoaY9gYXPmo9zXi"
+            filename="mysounds.zip"
+            curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
+            curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
+            unzip mysounds.zip
+            rm mysounds.zip
+            sudo mv mysounds /usr/share/sounds
+            echo '\033[32;1mDone.\033[0m\n'
+            
+            #echo '\033[32;1mAdding MenuRootActions to the Dolphin...\033[0m\n'
+            #fileid="1jNiMYW3lxBYuUfeBt4z-_svhCIG1f3gb"
+            #filename="rootactions-servicemenu.pl"
+            #curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
+            #curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
+            #sudo mv rootactions-servicemenu.pl /usr/bin
+            #echo '\033[32;1mDone.\033[0m\n'
+            
+            break;;
+        [Nn]* ) echo '\033[31;1m...skipped.\033[0m\n'; break;;
+        * ) echo '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
+    esac
+done
+echo ''
+
+
+# https://drive.google.com/file/d/1W-659_cJLsZtEeUr98mT8E-iGMz2Rdcd/view?usp=sharing
 echo '\033[1mPackage\033[33;1m "JAVA 8 (jre8)"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            fileid="1bx-rgkGe9avzcl98MgqAOeY1X_pvvVfh"
-            filename="jre-8u271-linux-x64.tar.gz"
+            fileid="1W-659_cJLsZtEeUr98mT8E-iGMz2Rdcd"
+            filename="oracle-java8-jdk_8u151_amd64.deb"
             curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
             curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
-            tar -xf jre-8u271-linux-x64.tar.gz
-            sudo mv jre1.8.0_271 /usr/lib/jvm/
-            rm -R jre-8u271-linux-x64.tar.gz
-            sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jre1.8.0_271/bin/java 1
-            echo -e 'Now jre8 set to default...\n'
-            sudo update-alternatives --config java
+            sudo dpkg -i oracle-java8-jdk_8u151_amd64.deb
+            rm -R oracle-java8-jdk_8u151_amd64.deb
+            # echo -e 'Now jre8 set to default...\n'
+            # sudo update-alternatives --config java
             echo '\033[32;1mDone.\033[0m\n'
             break;;
         [Nn]* ) echo '\033[31;1m...skipped.\033[0m\n'; break;;
@@ -91,7 +120,7 @@ while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            sudo apt install -y opam ocaml make fuse camlp4-extra build-essential pkg-config ssh libcurl4-gnutls-dev libfuse-dev libgmp-dev libsqlite3-dev zlib1g-dev  
+            sudo apt install -y opam ocaml fuse  
             opam init
             eval $(opam env)
             opam update
@@ -182,21 +211,7 @@ while true; do
 done
 echo ''
 
-echo '\033[1mDrivers\033[33;1m "nvidia 340xx-dkms"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
-while true; do
-    read yn
-    case $yn in
-        [Yy]* ) 
-            echo '\033[32;1mDone.\033[0m\n'
-            break;;
-        [Nn]* ) echo '\033[31;1m...skipped.\033[0m\n'; break;;
-        * ) echo '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
-    esac
-done
-echo ''
-echo ''
-
-echo '\033[1mDo you want to remove the script\033[33;1m "debforme.sh"\033[0m\033[1m\033[36;1m? (y/n) \033[0m'
+echo '\033[1mDo you want to remove this script\033[33;1m ("debforme.sh")\033[0m\033[1m\033[36;1m? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
@@ -220,5 +235,7 @@ echo '\033[32;1m***                   Good luck! :-)                ***\033[0m\n
 echo '\033[32;1m*******************************************************\033[0m\n'
 echo ''
 echo ''
+
+zsh
 
 
