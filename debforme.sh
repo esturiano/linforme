@@ -15,7 +15,7 @@ while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            sudo apt install -y curl yakuake unzip pipenv cmake build-essential pkg-config ssh libcurl4-gnutls-dev libfuse-dev libgmp-dev libsqlite3-dev zlib1g-dev camlp4-extra kate git
+            sudo apt install -y curl yakuake unzip pipenv cmake build-essential pkg-config ssh libcurl4-gnutls-dev libfuse-dev libgmp-dev libsqlite3-dev zlib1g-dev camlp4-extra kate git libqt5svg5-dev
             echo '\033[32;1mDone.\033[0m\n'
             
             break;;
