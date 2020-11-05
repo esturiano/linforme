@@ -56,18 +56,18 @@ done
 echo ''
 
 
-# https://drive.google.com/file/d/1W-659_cJLsZtEeUr98mT8E-iGMz2Rdcd/view?usp=sharing
+# https://drive.google.com/file/d/1f0YWmvnkIFTmLXRZ_YOqngPkg8pzw5oV/view?usp=sharing (v/271)
 echo '\033[1mPackage\033[33;1m "JAVA 8 (jre8)"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            fileid="1W-659_cJLsZtEeUr98mT8E-iGMz2Rdcd"
-            filename="oracle-java8-jdk_8u151_amd64.deb"
+            fileid="1f0YWmvnkIFTmLXRZ_YOqngPkg8pzw5oV"
+            filename="oracle-java8-jdk_8u271_amd64.deb"
             curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
             curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
-            sudo dpkg -i oracle-java8-jdk_8u151_amd64.deb
-            rm -R oracle-java8-jdk_8u151_amd64.deb
+            sudo dpkg -i oracle-java8-jdk_8u271_amd64.deb
+            rm -R oracle-java8-jdk_8u271_amd64.deb
             # echo -e 'Now jre8 set to default...\n'
             # sudo update-alternatives --config java
             echo '\033[32;1mDone.\033[0m\n'
@@ -137,7 +137,7 @@ while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            sudo apt install -y zsh
+            sudo apt install -y zsh zsh-autosuggestions zsh-syntax-highlighting
             curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh ;
             chsh -s /usr/bin/zsh;
             echo '\033[32;1mDone.\033[0m\n'
