@@ -10,7 +10,7 @@ echo '\033[32;1m*******************************************************\033[0m'
 echo ''
 echo ''
 
-echo '\033[1mInstalling important packages and make some settings\033[33;1m (for correct script working)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
+echo -n '\033[1mInstalling important packages and make some settings\033[33;1m (for correct script working)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
@@ -26,7 +26,7 @@ done
 echo ''
 
 
-echo '\033[1mSystem notification library\033[33;1m (my favorite sounds)\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
+echo -n '\033[1mSystem notification library\033[33;1m (my favorite sounds)\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
@@ -56,20 +56,31 @@ done
 echo ''
 
 
-# https://drive.google.com/file/d/1FGozAklryG-dIw4TTKl1uBNm8DGRz0vZ/view?usp=sharing (v/271)
-echo '\033[1mPackage\033[33;1m "JAVA 8 (jre8)"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
+# https://drive.google.com/file/d/1W-659_cJLsZtEeUr98mT8E-iGMz2Rdcd/view?usp=sharing jdk151
+# https://drive.google.com/file/d/1JjCnalXi6901-WFUzzw2YMMw2J4-aI31/view?usp=sharing jre151
+echo -n '\033[1mPackage\033[33;1m "JAVA 8 (jre8)"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            fileid="1FGozAklryG-dIw4TTKl1uBNm8DGRz0vZ"
-            filename="oracle-java8-jdk_8u271_amd64.deb"
+            fileid="1W-659_cJLsZtEeUr98mT8E-iGMz2Rdcd"
+            filename="oracle-java8-jdk_8u151_amd64.deb"
             curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
             curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
-            sudo dpkg -i oracle-java8-jdk_8u271_amd64.deb
-            rm -R oracle-java8-jdk_8u271_amd64.deb
-            # echo -e 'Now jre8 set to default...\n'
-            # sudo update-alternatives --config java
+            sudo dpkg -i oracle-java8-jdk_8u151_amd64.deb
+            rm -R oracle-java8-jdk_8u151_amd64.deb
+            
+            
+            fileid="1JjCnalXi6901-WFUzzw2YMMw2J4-aI31"
+            filename="oracle-java8-jre_8u151_amd64.deb"
+            curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
+            curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
+            sudo dpkg -i oracle-java8-jre_8u151_amd64.deb
+            rm -R oracle-java8-jre_8u151_amd64.deb
+            
+            #echo -e 'Now jre8 set to default...\n'
+            #sudo update-alternatives --config java
+            
             echo '\033[32;1mDone.\033[0m\n'
             break;;
         [Nn]* ) echo '\033[31;1m...skipped.\033[0m\n'; break;;
@@ -78,7 +89,7 @@ while true; do
 done
 echo ''
 
-echo '\033[1mSpecial browser \033[33;1m "FireFox 51.0.1"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
+echo -n '\033[1mSpecial browser \033[33;1m "FireFox 51.0.1"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
@@ -98,7 +109,7 @@ while true; do
 done
 echo ''
 
-echo '\033[1mPackage\033[33;1m "google-drive-ocamlfuse"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
+echo -n '\033[1mPackage\033[33;1m "google-drive-ocamlfuse"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
@@ -132,7 +143,7 @@ echo ''
 
 
 
-echo '\033[1mPackage\033[33;1m "zsh"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
+echo -n '\033[1mPackage\033[33;1m "zsh"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
@@ -150,7 +161,7 @@ echo ''
 
 
 # https://www.linuxuprising.com/2019/04/download-master-pdf-editor-4-for-linux.html
-echo '\033[1mPackage\033[33;1m "master-pdf-editor (free)"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
+echo -n '\033[1mPackage\033[33;1m "master-pdf-editor (free)"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
@@ -169,7 +180,7 @@ done
 echo ''
 
 # https://github.com/jimevins/glabels-qt/
-echo '\033[1mPackage\033[33;1m "glabels-qt (beta)"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
+echo -n '\033[1mPackage\033[33;1m "glabels-qt (beta)"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
@@ -194,7 +205,7 @@ while true; do
 done
 echo ''
 
-echo '\033[1mDo you want to remove this script\033[33;1m ("debforme.sh")\033[0m\033[1m\033[36;1m? (y/n) \033[0m'
+echo -n '\033[1mDo you want to remove this script\033[33;1m ("debforme.sh")\033[0m\033[1m\033[36;1m? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
