@@ -17,7 +17,7 @@ while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            sudo pacman -S git reflector curl go --noconfirm
+            sudo pacman -S git reflector curl go nano --noconfirm
             sudo reflector --verbose -l 20 -p https --sort rate --save /etc/pacman.d/mirrorlist
             git clone https://aur.archlinux.org/yay.git
             cd yay
@@ -34,14 +34,16 @@ done
 echo ''
 
 
-echo -en '\033[1mInstalling works packages and make some settings\033[33;1m (for correct script working)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
+echo -en '\033[1mInstalling packages and make some settings\033[33;1m (for correct script working)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
         [Yy]* ) 
         
             
-            yay -S gparted brave-bin visual-studio-code-bin android-tools filezilla kio-gdrive kde-servicemenus-rootactions --noconfirm
+            yay -S gparted flatpak brave-bin firefox firefox-l10n-ru libreoffice-fresh libreoffice-fresh-ru visual-studio-code-bin android-tools filezilla kio-gdrive kde-servicemenus-rootactions --noconfirm
+            # Подключение репозитория flathub
+            sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
             echo -en '\033[32;1mDone.\033[0m\n'
             
             break;;
