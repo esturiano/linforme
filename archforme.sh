@@ -10,8 +10,6 @@ echo -en '\033[32;1m*******************************************************\033[
 echo ''
 echo ''
 
-
-
 echo -en '\033[1mPackage\033[33;1m (yay)\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
@@ -33,15 +31,30 @@ while true; do
 done
 echo ''
 
+echo -en '\033[1mPackages KDE-plasma\033[33;1m (plasma)\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
+while true; do
+    read yn
+    case $yn in
+        [Yy]* ) 
+            sudo pacman -S plasma yakuake konsole dolphin okular sddm sddm-kcm kio-gdrive kde-servicemenus-rootactions --noconfirm
+            sudo systemctl enable sddm
+            echo -en '\033[32;1mDone.\033[0m'
+            
+            break;;
+        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
+        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
+    esac
+done
+echo ''
 
-echo -en '\033[1mInstalling packages and make some settings\033[33;1m (for correct script working)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
+echo -en '\033[1mInstalling packages for works\033[33;1m (browsers, office, tools etc.)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
         [Yy]* ) 
         
             
-            yay -S gparted flatpak brave-bin firefox firefox-l10n-ru libreoffice-fresh libreoffice-fresh-ru visual-studio-code-bin android-tools filezilla kio-gdrive kde-servicemenus-rootactions --noconfirm
+            yay -S gparted flatpak brave-bin firefox firefox-l10n-ru libreoffice-fresh libreoffice-fresh-ru visual-studio-code-bin android-tools filezilla  --noconfirm
             # Подключение репозитория flathub
             sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
             echo -en '\033[32;1mDone.\033[0m\n'
