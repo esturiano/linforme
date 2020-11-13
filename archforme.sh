@@ -138,6 +138,7 @@ while true; do
             echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
             git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
             echo -en '\033[33mAdd plugin to the file .zshrc (string plugins =(... zsh-autosuggestions).\033[0m\n'
+            nano +71 .zshrc
             echo -en '\033[32;1mDone.\033[0m\n'
             break;;
         [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
