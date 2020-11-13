@@ -11,6 +11,7 @@ echo ''
 echo ''
 
 
+
 echo -en '\033[1mPackage\033[33;1m (yay)\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
@@ -33,14 +34,14 @@ done
 echo ''
 
 
-echo -en '\033[1mInstalling important packages and make some settings\033[33;1m (for correct script working)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
+echo -en '\033[1mInstalling works packages and make some settings\033[33;1m (for correct script working)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
         [Yy]* ) 
         
             
-            yay -S gparted android-tools filezilla kio-gdrive touchpad-toggle kde-servicemenus-rootactions --noconfirm
+            yay -S gparted brave-bin visual-studio-code-bin android-tools filezilla kio-gdrive kde-servicemenus-rootactions --noconfirm
             echo -en '\033[32;1mDone.\033[0m\n'
             
             break;;
@@ -136,6 +137,7 @@ while true; do
             git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
             echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
             git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+            echo -en '\033[33mAdd plugin to the file .zshrc (string plugins =(... zsh-autosuggestions).\033[0m\n'
             echo -en '\033[32;1mDone.\033[0m\n'
             break;;
         [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
@@ -208,14 +210,11 @@ echo ''
 
 echo -en '\033[32;1m*******************************************************\033[0m\n'
 echo -en '\033[32;1m***                   GAME OVER!!!                  ***\033[0m\n'
-echo -en '\033[32;1m***                                                 ***\033[0m\n'
-echo -en '\033[32;1m***                  just now make                  ***\033[0m\n'
-echo -en '\033[32;1m***                \033[42;33;1;5mreboot, pls!\033[0m                     \033[32;1m***\033[0m\n'
-echo -en '\033[32;1m***                   Good luck! :-)                ***\033[0m\n'
+echo -en '\033[32;1m***                  Good luck! :-)                 ***\033[0m\n'
 echo -en '\033[32;1m*******************************************************\033[0m\n'
 echo -en ''
 echo -en ''
 
 # zsh
-
+source .zshrc
 
