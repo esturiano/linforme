@@ -16,7 +16,7 @@ while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            sudo pacman -S git reflector curl --noconfirm
+            sudo pacman -S git reflector curl go --noconfirm
             sudo reflector --verbose -l 20 -p https --sort rate --save /etc/pacman.d/mirrorlist
             git clone https://aur.archlinux.org/yay.git
             cd yay
@@ -130,9 +130,12 @@ while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            yay -S zsh zsh-autosuggestions zsh-syntax-highlighting --noconfirm
+            yay -S zsh --noconfirm
             curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh ;
             sudo chsh -s /usr/bin/zsh;
+            git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+            echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+            git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
             echo -en '\033[32;1mDone.\033[0m\n'
             break;;
         [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
