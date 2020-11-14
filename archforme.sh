@@ -15,7 +15,7 @@ while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            sudo pacman -S git reflector curl go nano --noconfirm
+            sudo pacman -S git reflector curl go nano unzip --noconfirm
             sudo reflector --verbose -l 20 -p https --sort rate --save /etc/pacman.d/mirrorlist
             git clone https://aur.archlinux.org/yay.git
             cd yay
@@ -36,7 +36,7 @@ while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            sudo pacman -S plasma yakuake konsole dolphin okular sddm sddm-kcm kio-gdrive kde-servicemenus-rootactions --noconfirm
+            yay -S plasma yakuake konsole dolphin okular ark sddm sddm-kcm kio-gdrive kde-servicemenus-rootactions  --noconfirm
             sudo systemctl enable sddm
             echo -en '\033[32;1mDone.\033[0m'
             
@@ -54,7 +54,7 @@ while true; do
         [Yy]* ) 
         
             
-            yay -S gparted flatpak brave-bin firefox firefox-l10n-ru libreoffice-fresh libreoffice-fresh-ru visual-studio-code-bin android-tools filezilla  --noconfirm
+            yay -S gparted vlc gimp inkscape flatpak brave-bin firefox firefox-i18n-ru libreoffice-fresh libreoffice-fresh-ru visual-studio-code-bin android-tools filezilla  --noconfirm
             # Подключение репозитория flathub
             sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
             echo -en '\033[32;1mDone.\033[0m\n'
