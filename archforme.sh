@@ -54,7 +54,7 @@ while true; do
         [Yy]* ) 
         
             
-            yay -S gparted vlc gimp inkscape flatpak brave-bin firefox firefox-i18n-ru libreoffice-fresh libreoffice-fresh-ru visual-studio-code-bin android-tools filezilla  --noconfirm
+            yay -S gparted vlc gimp flatpak firefox firefox-i18n-ru libreoffice-fresh libreoffice-fresh-ru visual-studio-code-bin android-tools filezilla  --noconfirm
             # Подключение репозитория flathub
             sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
             echo -en '\033[32;1mDone.\033[0m\n'
@@ -148,9 +148,10 @@ while true; do
         [Yy]* ) 
             yay -S zsh --noconfirm
             curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh ;
-            sudo chsh -s /usr/bin/zsh;
+            chsh -s /usr/bin/zsh;
             git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-            echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+            # mv zsh-syntax-highlighting .zsh-syntax-highlighting
+            echo "source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
             git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
             echo -en '\033[33mAdd plugin to the file .zshrc (string plugins =(... zsh-autosuggestions).\033[0m\n'
             cd
