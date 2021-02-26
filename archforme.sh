@@ -36,8 +36,9 @@ while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            yay -S plasma yakuake konsole dolphin okular ark sddm sddm-kcm kio-gdrive kde-servicemenus-rootactions  --noconfirm
+            yay -S plasma kde-applications sddm sddm-kcm kde-servicemenus-rootactions yandex-disk yandex-disk-indicator --noconfirm
             sudo systemctl enable sddm
+            mkdir ~/.esturiano@yandex
             echo -en '\033[32;1mDone.\033[0m'
             
             break;;
@@ -54,9 +55,9 @@ while true; do
         [Yy]* ) 
         
             
-            yay -S gparted vlc gimp flatpak firefox firefox-i18n-ru libreoffice-fresh libreoffice-fresh-ru visual-studio-code-bin android-tools filezilla  --noconfirm
+            yay -S gparted vlc gimp firefox firefox-i18n-ru libreoffice-fresh libreoffice-fresh-ru visual-studio-code-bin android-tools filezilla opera-ffmpeg-codecs opera --noconfirm
             # Подключение репозитория flathub
-            sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+            # sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
             echo -en '\033[32;1mDone.\033[0m\n'
             
             break;;
@@ -92,26 +93,6 @@ echo ''
 # https://drive.google.com/file/d/1W-659_cJLsZtEeUr98mT8E-iGMz2Rdcd/view?usp=sharing jdk151
 # https://drive.google.com/file/d/1JjCnalXi6901-WFUzzw2YMMw2J4-aI31/view?usp=sharing jre151
 
-echo -en '\033[1mSpecial browser \033[33;1m "FireFox 51.0.1"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
-while true; do
-    read yn
-    case $yn in
-        [Yy]* ) 
-            fileid="1ZZ5QjQc3fQ8L1Ldgzq0QpPDM4slMx0Cv"
-            filename="firefox-51.0.1.zip"
-            curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
-            curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
-            unzip firefox-51.0.1.zip
-            mv firefox .firefox51
-            rm -R firefox-51.0.1.zip
-            echo -en '\033[32;1mDone.\033[0m\n'
-            break;;
-        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
-        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
-    esac
-done
-echo ''
-
 echo -en '\033[1mPackage\033[33;1m "google-drive-ocamlfuse-opam"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
@@ -120,7 +101,7 @@ while true; do
             yay -S google-drive-ocamlfuse-opam --noconfirm
             echo -en '\033[32;1mDone.\033[0m\n'
             mkdir ~/.drive@alejandro
-            mkdir ~/.drive@senoraarina
+            # mkdir ~/.drive@senoraarina
             
             fileid="1bvlxchCP5ZNQ1WV-o1Qq9IAKDnLs_Vq1"
             filename="__ocamlgoogledrive.sh"
