@@ -36,8 +36,8 @@ while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            yay -S plasma kde-applications sddm sddm-kcm kde-servicemenus-rootactions yandex-disk yandex-disk-indicator --noconfirm
-            sudo systemctl enable sddm
+            yay -S xnconvert kde-servicemenus-rootactions yandex-disk yandex-disk-indicator --noconfirm
+            # sudo systemctl enable sddm
             mkdir ~/.esturiano@yandex
             echo -en '\033[32;1mDone.\033[0m'
             
