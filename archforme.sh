@@ -131,8 +131,8 @@ while true; do
             curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh ;
             chsh -s /usr/bin/zsh;
             git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-            # mv zsh-syntax-highlighting .zsh-syntax-highlighting
-            echo "source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+            mv zsh-syntax-highlighting .zsh-syntax-highlighting
+            echo "source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
             git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
             echo -en '\033[33mAdd plugin to the file .zshrc (string plugins =(... zsh-autosuggestions).\033[0m\n'
             cd
