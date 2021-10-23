@@ -36,7 +36,7 @@ while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            yay -S xnconvert kde-servicemenus-rootactions yandex-disk yandex-disk-indicator --noconfirm
+            yay -S xnconvert kde-servicemenus-rootactions yandex-disk yandex-disk-indicator jq --noconfirm
             # sudo systemctl enable sddm
             mkdir ~/.esturiano@yandex
             echo -en '\033[32;1mDone.\033[0m'
@@ -55,7 +55,7 @@ while true; do
         [Yy]* ) 
         
             
-            yay -S gparted vlc gimp firefox firefox-i18n-ru libreoffice-fresh libreoffice-fresh-ru visual-studio-code-bin android-tools filezilla opera-ffmpeg-codecs opera --noconfirm
+            yay -S gparted vlc gimp libreoffice-fresh libreoffice-fresh-ru android-tools filezilla yandex-browser-beta --noconfirm
             # Подключение репозитория flathub
             # sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
             echo -en '\033[32;1mDone.\033[0m\n'
