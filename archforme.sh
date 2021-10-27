@@ -15,7 +15,7 @@ while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            sudo pacman -S git reflector curl go nano unzip --noconfirm
+            sudo pacman -S reflector curl go unzip jq --noconfirm
             sudo reflector --verbose -l 20 -p https --sort rate --save /etc/pacman.d/mirrorlist
             git clone https://aur.archlinux.org/yay.git
             cd yay
@@ -36,8 +36,7 @@ while true; do
     read yn
     case $yn in
         [Yy]* ) 
-            yay -S xnconvert kde-servicemenus-rootactions yandex-disk yandex-disk-indicator jq --noconfirm
-            # sudo systemctl enable sddm
+            yay -S xnconvert kde-servicemenus-rootactions yandex-disk yandex-disk-indicator yandex-browser-beta --noconfirm
             mkdir ~/.esturiano@yandex
             echo -en '\033[32;1mDone.\033[0m'
             
@@ -55,7 +54,7 @@ while true; do
         [Yy]* ) 
         
             
-            yay -S gparted vlc gimp libreoffice-fresh libreoffice-fresh-ru android-tools filezilla yandex-browser-beta --noconfirm
+            yay -S gparted vlc gimp libreoffice-fresh libreoffice-fresh-ru --noconfirm
             # Подключение репозитория flathub
             # sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
             echo -en '\033[32;1mDone.\033[0m\n'
@@ -89,39 +88,6 @@ while true; do
 done
 echo ''
 
-
-# https://drive.google.com/file/d/1W-659_cJLsZtEeUr98mT8E-iGMz2Rdcd/view?usp=sharing jdk151
-# https://drive.google.com/file/d/1JjCnalXi6901-WFUzzw2YMMw2J4-aI31/view?usp=sharing jre151
-
-echo -en '\033[1mPackage\033[33;1m "google-drive-ocamlfuse-opam"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
-while true; do
-    read yn
-    case $yn in
-        [Yy]* ) 
-            yay -S google-drive-ocamlfuse-opam --noconfirm
-            echo -en '\033[32;1mDone.\033[0m\n'
-            mkdir ~/.drive@alejandro
-            # mkdir ~/.drive@senoraarina
-            
-            fileid="1bvlxchCP5ZNQ1WV-o1Qq9IAKDnLs_Vq1"
-            filename="__ocamlgoogledrive.sh"
-            curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
-            curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
-            chmod +x __ocamlgoogledrive.sh
-            sudo mv __ocamlgoogledrive.sh /usr/bin
-            cd .config/autostart-scripts/ && ln -s /usr/bin/__ocamlgoogledrive.sh
-            cd 
-            
-            echo -en '\033[32;1mTuned.\033[0m\n'
-            break;;
-        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
-        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
-    esac
-done
-echo ''
-
-
-
 echo -en '\033[1mPackage\033[33;1m "zsh"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
@@ -130,12 +96,14 @@ while true; do
             yay -S zsh --noconfirm
             curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh ;
             chsh -s /usr/bin/zsh;
+            sudo chsh -s /usr/bin/zsh;
             git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
             mv zsh-syntax-highlighting .zsh-syntax-highlighting
             echo "source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
             git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
             echo -en '\033[33mAdd plugin to the file .zshrc (string plugins =(... zsh-autosuggestions).\033[0m\n'
             cd
+            zsh
             nano +71 .zshrc
             echo -en '\033[32;1mDone.\033[0m\n'
             break;;
