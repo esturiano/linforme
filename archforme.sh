@@ -30,6 +30,7 @@ while true; do
     esac
 done
 echo ''
+clear
 
 echo -en '\033[1mInstalling yandex-browser-beta\033[33;1m (+jq!)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
 while true; do
@@ -46,6 +47,7 @@ while true; do
     esac
 done
 echo ''
+clear
 
 echo -en '\033[1mInstalling yandex-disk\033[33;1m (+GUI indicator)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
 while true; do
@@ -63,6 +65,8 @@ while true; do
     esac
 done
 echo ''
+clear
+
 
 echo -en '\033[1mInstalling daily packages\033[33;1m (utils, office, tools etc.)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
 while true; do
@@ -80,6 +84,8 @@ while true; do
     esac
 done
 echo ''
+clear
+
 
 # https://drive.google.com/file/d/1JJdi5aNSjN74WD0FQmcjq2PVaYCQlXs5/view?usp=sharing
 echo -en '\033[1mSystem notification library\033[33;1m (my favorite sounds)\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
@@ -102,7 +108,7 @@ while true; do
     esac
 done
 echo ''
-
+clear
 
 
 echo -en '\033[1mPackage\033[33;1m "zsh"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
@@ -128,6 +134,7 @@ while true; do
     esac
 done
 echo ''
+clear
 
 
 # https://www.linuxuprising.com/2019/04/download-master-pdf-editor-4-for-linux.html
@@ -144,6 +151,8 @@ while true; do
     esac
 done
 echo ''
+clear
+
 
 # https://github.com/jimevins/glabels-qt/
 echo -en '\033[1mPackage\033[33;1m "glabels-qt (beta)"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
@@ -159,6 +168,7 @@ while true; do
     esac
 done
 echo ''
+clear
 
 
 echo -en '\033[1mDrivers\033[33;1m "nvidia-340xx-lts-dkms"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
@@ -175,6 +185,8 @@ while true; do
     esac
 done
 echo ''
+clear
+
 
 echo -en '\033[1mDo you want to remove this script\033[33;1m ("archforme.sh")\033[0m\033[1m\033[36;1m? (y/n) \033[0m'
 while true; do
@@ -190,6 +202,8 @@ while true; do
 done
 echo ''
 echo ''
+clear
+
 
 echo -en '\033[32;1m*******************************************************\033[0m\n'
 echo -en '\033[32;1m***                   GAME OVER!!!                  ***\033[0m\n'
@@ -197,3 +211,4 @@ echo -en '\033[32;1m***                  Good luck! :-)                 ***\033[
 echo -en '\033[32;1m*******************************************************\033[0m\n'
 echo -en ''
 echo -en ''
+
