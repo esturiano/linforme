@@ -93,7 +93,7 @@ while true; do
             curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
             unzip msounds.zip
             rm msounds.zip
-            sudo mv -r msounds /usr/share/sounds
+            sudo mv msounds /usr/share/sounds
             echo -en '\033[32;1mDone.\033[0m\n'
 
             break;;
