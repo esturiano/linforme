@@ -81,13 +81,13 @@ while true; do
 done
 echo ''
 
-# https://drive.google.com/file/d/1xGEcxrK5V0l4LssQhTEXUwYyTsf4S6pu/view?usp=sharing
+# https://drive.google.com/file/d/1cQ76Niq8vPeOSlplThiEhjV7lnojMi8s/view?usp=sharing
 echo -en '\033[1mSystem notification library\033[33;1m (my favorite sounds)\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
         [Yy]* )
-            fileid="1xGEcxrK5V0l4LssQhTEXUwYyTsf4S6pu"
+            fileid="1cQ76Niq8vPeOSlplThiEhjV7lnojMi8s"
             filename="msounds.zip"
             curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
             curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
