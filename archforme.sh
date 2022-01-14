@@ -16,7 +16,7 @@ while true; do
     case $yn in
         [Yy]* )
             sudo pacman -S git reflector curl go nano unzip --noconfirm
-            sudo reflector --verbose -l 20 -p https --sort rate --save /etc/pacman.d/mirrorlist
+            sudo reflector --verbose -l 20 -p https --country='Russia,Germany, ' --sort rate --save /etc/pacman.d/mirrorlist
             git clone https://aur.archlinux.org/yay.git
             cd yay
             makepkg -sir
