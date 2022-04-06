@@ -32,13 +32,13 @@ done
 echo ''
 clear
 
-echo -en '\033[1mInstalling yandex-browser-beta\033[33;1m (+jq!)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
+echo -en '\033[1mInstalling yandex-browser\033[33;1m (+jq!)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
         [Yy]* )
 
-            yay -S --noconfirm jq yandex-browser-beta
+            yay -S --noconfirm jq yandex-browser
             echo -en '\033[32;1mDone.\033[0m\n'
 
             break;;
