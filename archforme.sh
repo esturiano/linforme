@@ -94,7 +94,7 @@ while true; do
         [Yy]* )
 
 
-            yay -S --noconfirm libvirt qemu-arch-extra qemu-guest-agent qemu virt-manager
+            yay -S --noconfirm libvirt qemu-arch-extra qemu-guest-agent qemu virt-manager dnsmasq
             yay -S --noconfirm virtio-win
             sudo gpasswd -a $USER libvirt
             sudo systemctl start libvirtd.service
