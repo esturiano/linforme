@@ -110,6 +110,23 @@ echo ''
 clear
 
 
+echo -en '\033[1mPackage\033[33;1m "Chaotic-AUR"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
+while true; do
+    read yn
+    case $yn in
+        [Yy]* )
+            wget -q -O chaotic-AUR-installer.bash https://raw.githubusercontent.com/SharafatKarim/chaotic-AUR-installer/main/install.bash && sudo bash chaotic-AUR-installer.bash && rm chaotic-AUR-installer.bash
+            echo -en '\033[32;1mDone.\033[0m\n'
+            
+            break;;
+        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
+        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
+    esac
+done
+echo ''
+clear
+
+
 # https://drive.google.com/file/d/1JJdi5aNSjN74WD0FQmcjq2PVaYCQlXs5/view?usp=sharing
 echo -en '\033[1mSystem notification library\033[33;1m (my favorite sounds)\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
