@@ -16,7 +16,7 @@ while true; do
     case $yn in
         [Yy]* )
             sudo pacman -S git reflector curl go nano unzip --noconfirm
-            sudo reflector --verbose -l 20 -p https --country='Russia,Germany, ' --sort rate --save /etc/pacman.d/mirrorlist
+            sudo reflector --verbose -l 20 -p https --country='Russia,USA, ' --sort rate --save /etc/pacman.d/mirrorlist
             git clone https://aur.archlinux.org/yay.git
             cd yay
             makepkg -sir
@@ -75,7 +75,7 @@ while true; do
         [Yy]* )
 
 
-            yay -S --noconfirm gnome-disk-utility okular imagewriter gimp kdenlive obs-studio blender soundkonverter kde-servicemenus-rootactions libreoffice-fresh libreoffice-fresh-ru
+            yay -S --noconfirm gnome-disk-utility okular imagewriter gimp kdenlive obs-studio blender soundkonverter libreoffice-fresh libreoffice-fresh-ru
             echo -en '\033[32;1mDone.\033[0m\n'
 
             break;;
