@@ -15,7 +15,7 @@ while true; do
     read yn
     case $yn in
         [Yy]* )
-            sudo pacman -S git reflector curl go nano unzip --noconfirm
+            sudo pacman -S git reflector curl wget go nano unzip --noconfirm
             sudo reflector --verbose -l 20 -p https --country='Russia,USA, ' --sort rate --save /etc/pacman.d/mirrorlist
             git clone https://aur.archlinux.org/yay.git
             cd yay
@@ -31,6 +31,24 @@ while true; do
 done
 echo ''
 clear
+
+
+echo -en '\033[1mPackage\033[33;1m "Chaotic-AUR"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
+while true; do
+    read yn
+    case $yn in
+        [Yy]* )
+            wget -q -O chaotic-AUR-installer.bash https://raw.githubusercontent.com/SharafatKarim/chaotic-AUR-installer/main/install.bash && sudo bash chaotic-AUR-installer.bash && rm chaotic-AUR-installer.bash
+            echo -en '\033[32;1mDone.\033[0m\n'
+            
+            break;;
+        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
+        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
+    esac
+done
+echo ''
+clear
+
 
 echo -en '\033[1mInstalling yandex-browser\033[33;1m (+jq!)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
 while true; do
@@ -49,6 +67,7 @@ done
 echo ''
 clear
 
+
 echo -en '\033[1mInstalling yandex-disk\033[33;1m (+GUI indicator)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
 while true; do
     read yn
@@ -57,6 +76,25 @@ while true; do
 
             yay -S --noconfirm yandex-disk yandex-disk-indicator
             mkdir ~/.esturiano@yandex
+            echo -en '\033[32;1mDone.\033[0m\n'
+
+            break;;
+        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
+        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
+    esac
+done
+echo ''
+clear
+
+
+echo -en '\033[1mInstalling firefox\033[33;1m (utils, office, tools etc.)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
+while true; do
+    read yn
+    case $yn in
+        [Yy]* )
+
+
+            yay -S --noconfirm firefox firefox-i18n-ru
             echo -en '\033[32;1mDone.\033[0m\n'
 
             break;;
@@ -110,14 +148,35 @@ echo ''
 clear
 
 
-echo -en '\033[1mPackage\033[33;1m "Chaotic-AUR"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
+echo -en '\033[1mInstalling UAV\033[33;1m (utils, office, tools etc.)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
         [Yy]* )
-            wget -q -O chaotic-AUR-installer.bash https://raw.githubusercontent.com/SharafatKarim/chaotic-AUR-installer/main/install.bash && sudo bash chaotic-AUR-installer.bash && rm chaotic-AUR-installer.bash
+
+
+            yay -S --noconfirm qgroundcontrol ardupilot-mission-planner google-earth-pro 
             echo -en '\033[32;1mDone.\033[0m\n'
-            
+
+            break;;
+        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
+        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
+    esac
+done
+echo ''
+clear
+
+
+echo -en '\033[1mInstalling agisoft metashape\033[33;1m (utils, office, tools etc.)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
+while true; do
+    read yn
+    case $yn in
+        [Yy]* )
+
+
+            yay -S --noconfirm agisoft-metashape-pro 
+            echo -en '\033[32;1mDone.\033[0m\n'
+
             break;;
         [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
         * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
@@ -211,13 +270,17 @@ echo ''
 clear
 
 
-echo -en '\033[1mDrivers\033[33;1m "nvidia-340xx-lts-dkms"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
+echo -en '\033[1mPackages\033[33;1m "CUPS"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
         [Yy]* )
-            yay -Sy nvidia-340xx-lts-dkms nvidia-340xx-utils lib32-opencl-nvidia-340xx opencl-nvidia-340xx --noconfirm
-            sudo nvidia-xconfig --no-logo
+            yay -Sy cups cups-pdf foomatic-db foomatic-db-engine foomatic-db-ppds foomatic-db-nonfree foomatic-db-nonfree-ppds gutenprint foomatic-db-gutenprint-ppds hplip --noconfirm; 
+            sudo systemctl start cups.service;
+            sudo systemctl enable cups.service;
+            yay -S system-config-printer print-manager --noconfirm;
+            sudo systemctl restart cups.service;
+            
             echo -en '\033[32;1mDone.\033[0m\n'
             break;;
         [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
