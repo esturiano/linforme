@@ -252,6 +252,23 @@ done
 echo ''
 clear
 
+# БПЛА
+echo -en '\033[1mPackage\033[33;1m "UAV software"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
+while true; do
+    read yn
+    case $yn in
+        [Yy]* )
+            yay -S ardupilot-mission-planner mwptools-git qgroundcontrol-appimage inav-configurator google-earth-pro qgis photivo-git betaflight-configurator-bin --noconfirm
+            echo -en '\033[32;1mVersion 4.3.89 installed.\033[0m\n'
+            break;;
+        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
+        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
+    esac
+done
+echo ''
+clear
+
+
 
 # https://github.com/jimevins/glabels-qt/
 echo -en '\033[1mPackage\033[33;1m "glabels-qt (beta)"\033[0m\033[1m. \033[36;1mInstall? (y/n) \033[0m'
