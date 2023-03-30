@@ -148,25 +148,6 @@ echo ''
 clear
 
 
-echo -en '\033[1mInstalling UAV\033[33;1m (utils, office, tools etc.)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
-while true; do
-    read yn
-    case $yn in
-        [Yy]* )
-
-
-            yay -S --noconfirm qgroundcontrol ardupilot-mission-planner google-earth-pro 
-            echo -en '\033[32;1mDone.\033[0m\n'
-
-            break;;
-        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
-        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
-    esac
-done
-echo ''
-clear
-
-
 echo -en '\033[1mInstalling agisoft metashape\033[33;1m (utils, office, tools etc.)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
 while true; do
     read yn
