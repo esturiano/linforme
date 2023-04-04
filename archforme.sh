@@ -106,6 +106,24 @@ echo ''
 clear
 
 
+echo -en '\033[1mInstalling japanes, chines etc. fonts\033[33;1m \033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
+while true; do
+    read yn
+    case $yn in
+        [Yy]* )
+
+
+            yay -S ttf-tw wqy-microhei wqy-zenhei ttf-arphic-ukai opendesktop-fonts wqy-bitmapfont ttf-hannom otf-ipafont ttf-vlgothic ttf-mplus  ttf-monapo ttf-sazanami ttf-unfonts-core ttf-nanum ttf-nanumgothic_coding --noconfirm
+            echo -en '\033[32;1mDone.\033[0m\n'
+
+            break;;
+        [Nn]* ) echo -en '\033[31;1m...skipped.\033[0m\n'; break;;
+        * ) echo -en '\033[1mPlease, type \033[33;1;5m"y"\033[0m or \033[33;1;5m"n"\033[0m.';;
+    esac
+done
+echo ''
+clear
+
 echo -en '\033[1mInstalling daily packages\033[33;1m (utils, office, tools etc.)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
 while true; do
     read yn
