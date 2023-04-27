@@ -87,7 +87,7 @@ echo ''
 clear
 
 
-echo -en '\033[1mInstalling firefox\033[33;1m (utils, office, tools etc.)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
+echo -en '\033[1mInstalling firefox\033[33;1m \033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
@@ -166,7 +166,7 @@ echo ''
 clear
 
 
-echo -en '\033[1mInstalling agisoft metashape\033[33;1m (utils, office, tools etc.)\033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
+echo -en '\033[1mInstalling agisoft metashape\033[33;1m \033[0m\033[1m. \033[36;1mDo it? (y/n) \033[0m'
 while true; do
     read yn
     case $yn in
