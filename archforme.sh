@@ -131,7 +131,7 @@ while true; do
         [Yy]* )
 
 
-            yay -S --noconfirm update-grub reflector-simple gnome-disk-utility okular imagewriter gimp kdenlive obs-studio blender soundkonverter libreoffice-fresh libreoffice-fresh-ru
+            yay -S --noconfirm update-grub reflector-simple gnome-disk-utility okular imagewriter gimp kdenlive obs-studio blender qt5-imageformats soundkonverter libreoffice-fresh libreoffice-fresh-ru
             echo -en '\033[32;1mDone.\033[0m\n'
 
             break;;
